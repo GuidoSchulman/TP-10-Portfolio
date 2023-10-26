@@ -1,5 +1,5 @@
 import React from 'react'
-import Destacado from '../components/destacado'
+import Destacado from '../components/item'
 
 
 function Index(props) {
