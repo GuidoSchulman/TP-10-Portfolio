@@ -19,17 +19,32 @@ const MasInfo = () => {
 
     console.log('infop',personaje)
     return (
-        <><center>
-  
-                
-                <h1>aaaa{personaje?.titulo}</h1>
-                <img className="img-fluid" src={personaje?.imagen} alt={personaje?.titulo} />            
+
+        <><section >
+        <div class="container">
+           
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">MasInfo</h2>
+           
+           
+             
+            <div class="row justify-content-center">
+            <h1>{personaje?.titulo}</h1>
+            <img
+              className="img-fluid"
+              src={personaje?.imagen}
+              alt={personaje?.titulo}
+                          
             
-        </center>
+            /> 
+                </div>
+        </div>
+    </section>
+        
+        
+
           
         </>
     )
 }
 
 export default MasInfo
-
