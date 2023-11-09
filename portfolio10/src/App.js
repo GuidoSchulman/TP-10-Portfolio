@@ -2,17 +2,23 @@ import './App.css';
 import Index from './pages';
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Layout from './pages/layout';
+import PersonajeProvider from './context/personajeContext';
+import MasInfo from './pages/masInfo';
 
 function App() {
   return (
-    <BrowserRouter>
+    <PersonajeProvider>
+ <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<Index />}></Route>
-        
+        <Route path='/misCreaciones' element={<misCreaciones/>}></Route>
+        <Route path='/masInfo/:id' element={<MasInfo/>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>
+    </PersonajeProvider>
+   
   );
 }
 
