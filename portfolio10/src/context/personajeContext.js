@@ -24,7 +24,8 @@ const PersonajeProvider = (props) => {
             value={{                
                 Personajes,
                 setSelectedPersonaje,
-                selectedPersonaje
+                selectedPersonaje,
+                setPersonajes
             }}
         >
             {props.children}

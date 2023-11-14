@@ -1,58 +1,68 @@
 {
-    "Personajes":[{
-        "id":0,
-        "titulo":"SPIDER-MAN (Peter Parker)",
-        "descripcion":"Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
-        "imagen":"assets/img/Personajes/Spider-Man (Peter Parker).png",
-        "fecha":"1962",
-        "favorito":false
+  "Personajes": [
+    {
+      "id": 0,
+      "titulo": "SPIDER-MAN (Peter Parker)",
+      "descripcion": "Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/Spider-Man (Peter Parker).png",
+      "fecha": "1962",
+      "favorito": false
     },
     {
-        "id":1,
-        "titulo":"STAR-LORD",
-        "descripcion":"Leader of the Guardians of the Galaxy, Peter Quill, brings a sassy sense of humor while protecting the universe from any and all threats. This week on Marvel 101, Star-Lord is ready to kick some bad guy butt.",
-        "imagen":"assets/img/Personajes/StarLord.png",
-        "fecha":"1976",
-        "favorito":false
-    },{
-        "id":2,
-        "titulo":"8-BALL",
-        "descripcion":"Jeff Hagees was once a designer of missile propulsion systems for a defense contractor. To cope with the stress of his job, he turned to gambling, losing thousands in pool rooms. When he fell into serious financial jeopardy, his employers took notice of his gambling problem, and fired him, fearing he was selling defense secrets to pay his debts. Furious, he designed the costumed identity of 8-Ball, basing his custom pool cue on his propulsion system work. He organized a gang of henchmen and went on a crime spree in New York city to make his fortune.",
-        "imagen":"assets/img/Personajes/8-Ball.png",
-        "fecha":"1980",
-        "favorito":false
-    },{"id":3,
-        "titulo":"BLACK PANTHER",
-        "descripcion":"For generations, the people of Wakanda have followed the Black Panther, a superior warrior granted extra abilities upon proving himself worthy. For much of the modern era, T’Challa has worn the mantle of the Black Panther.",
-        "imagen":"assets/img/Personajes/BlackPanther.png",
-        "fecha":"1983",
-        "favorito":false
-    },{"id":4,
-        "titulo":"KNULL",
-        "descripcion":"Knull existed in the darkness when that was all that existed. When light poured into his blackness, he tumbled through existence for eons. During that time, the Celestials found the darkness wanting and began building space with light. After regaining himself, Knull plunged a hand into one of the giant gods and pulled out the proto symbiote which he turned into a sword and used to slay a Celestial. As punishment, the space gods sent Knull back into the void of the murder victim.",
-        "imagen":"assets/img/Personajes/Knull.png",
-        "fecha":"2003",
-        "favorito":false
-    },{"id":5,
-        "titulo":"SILVER SURFER",
-        "descripcion":"Norrin's life changed forever when a menacing alien spacecraft pierced Zenn-La's long-neglected defense systems. Convincing a Council of Scientists member to provide him with a spaceship, Radd soon confronted the invader, Galactus, who intended to consume Zenn-La. Radd offered to become his herald and seek out new worlds for him in exchange for Galactus sparing Zenn-La. Galactus agreed, transforming Radd into a silver-skinned, cosmic-powered super-being patterned after an adolescent fantasy plucked from Norrin's memories. Known thereafter as the Silver Surfer because of the silvery flying board he rode, Radd departed Zenn-La with Galactus.",
-        "imagen":"assets/img/Personajes/Silver Surfer.png",
-        "fecha":"1964",
-        "favorito":false
-    },{
-        "id":6,
-        "titulo":"DEADPOOL",
-        "descripcion":"Deadpool is a highly trained assassin and mercenary. He is adept in multiple forms of martial arts, including Savate.[91] Deadpool is an extraordinary athlete, and an expert swordsman and marksman. He is skilled in the use of multiple weapons, including katanas, knives, grenades, and guns.",
-        "imagen":"assets/img/Personajes/Deadpool.png",
-        "fecha":"1990",
-        "favorito":false
-    },{
-        "id":7,
-        "titulo":"JEAN GREY",
-        "descripcion":"Jean Grey is a mutant with vast empathic and telepathic abilities that were traumatically awakened when as a child she witnessed her best friend's death.",
-        "imagen":"assets/img/Personajes/Jean_Grey.png",
-        "fecha":"1985",
-        "favorito":false
+      "id": 1,
+      "titulo": "STAR-LORD",
+      "descripcion": "Leader of the Guardians of the Galaxy, Peter Quill, brings a sassy sense of humor while protecting the universe from any and all threats. This week on Marvel 101, Star-Lord is ready to kick some bad guy butt.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/StarLord.png",
+      "fecha": "1976",
+      "favorito": false
+    },
+    {
+      "id": 2,
+      "titulo": "8-BALL",
+      "descripcion": "Jeff Hagees was once a designer of missile propulsion systems for a defense contractor. To cope with the stress of his job, he turned to gambling, losing thousands in pool rooms. When he fell into serious financial jeopardy, his employers took notice of his gambling problem, and fired him, fearing he was selling defense secrets to pay his debts. Furious, he designed the costumed identity of 8-Ball, basing his custom pool cue on his propulsion system work. He organized a gang of henchmen and went on a crime spree in New York city to make his fortune.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/8-Ball.png",
+      "fecha": "1980",
+      "favorito": false
+    },
+    {
+      "id": 3,
+      "titulo": "BLACK PANTHER",
+      "descripcion": "For generations, the people of Wakanda have followed the Black Panther, a superior warrior granted extra abilities upon proving himself worthy. For much of the modern era, T’Challa has worn the mantle of the Black Panther.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/BlackPanther.png",
+      "fecha": "1983",
+      "favorito": false
+    },
+    {
+      "id": 4,
+      "titulo": "KNULL",
+      "descripcion": "Knull existed in the darkness when that was all that existed. When light poured into his blackness, he tumbled through existence for eons. During that time, the Celestials found the darkness wanting and began building space with light. After regaining himself, Knull plunged a hand into one of the giant gods and pulled out the proto symbiote which he turned into a sword and used to slay a Celestial. As punishment, the space gods sent Knull back into the void of the murder victim.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/Knull.png",
+      "fecha": "2003",
+      "favorito": false
+    },
+    {
+      "id": 5,
+      "titulo": "SILVER SURFER",
+      "descripcion": "Norrin's life changed forever when a menacing alien spacecraft pierced Zenn-La's long-neglected defense systems. Convincing a Council of Scientists member to provide him with a spaceship, Radd soon confronted the invader, Galactus, who intended to consume Zenn-La. Radd offered to become his herald and seek out new worlds for him in exchange for Galactus sparing Zenn-La. Galactus agreed, transforming Radd into a silver-skinned, cosmic-powered super-being patterned after an adolescent fantasy plucked from Norrin's memories. Known thereafter as the Silver Surfer because of the silvery flying board he rode, Radd departed Zenn-La with Galactus.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/Silver Surfer.png",
+      "fecha": "1964",
+      "favorito": false
+    },
+    {
+      "id": 6,
+      "titulo": "DEADPOOL",
+      "descripcion": "Deadpool is a highly trained assassin and mercenary. He is adept in multiple forms of martial arts, including Savate.[91] Deadpool is an extraordinary athlete, and an expert swordsman and marksman. He is skilled in the use of multiple weapons, including katanas, knives, grenades, and guns.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/Deadpool.png",
+      "fecha": "1990",
+      "favorito": false
+    },
+    {
+      "id": 7,
+      "titulo": "JEAN GREY",
+      "descripcion": "Jean Grey is a mutant with vast empathic and telepathic abilities that were traumatically awakened when as a child she witnessed her best friend's death.",
+      "imagen": "http://localhost:3000/assets/img/Personajes/Jean_Grey.png",
+      "fecha": "1985",
+      "favorito": false
     }
-    ]
+  ]
 }
