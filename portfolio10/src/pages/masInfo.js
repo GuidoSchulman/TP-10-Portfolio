@@ -7,25 +7,28 @@ const MasInfo = () => {
   const { Personajes, setSelectedPersonaje, setPersonajes } =useContext(PersonajeContext);
   const [personaje, setPersonaje] = useState(null);
   const [mensaje, setMensaje] = useState("Agregar a favoritos");
-  let Favoriteado = false;
+  const[fav,setFav]=useState(false)
 
   useEffect(() => {
+    
     let infoP = Personajes.find((personaje) => personaje.id === parseInt(id));
 
     if (infoP) {
       setPersonaje(infoP);
+      setFav(infoP.favorito)
     } else {
       // Handle the case where no personaje is found with the given id
       console.error(`No personaje found with id: ${id}`);
     }
-  }, [Personajes, id]);
-  const setFavoriteado = (value) => {
-    Favoriteado = value;
-    setMensaje(value ? "Quitar de favoritos" : "Agregar a favoritos");
+  }, [Personajes, id,mensaje]);
+
+  const setFavoriteado = () => {
+    setMensaje(fav ? "Agregar a favoritos" : "Quitar de favoritos");
   };
+
   const agregarAFavorito = () => {
     let listaPersonajes = Personajes;
-    if (Favoriteado === false) {
+    if (fav === false) {
       const index = Personajes.findIndex(
         (personaje) => personaje.id === parseInt(id)
       );
@@ -34,26 +37,24 @@ const MasInfo = () => {
         listaPersonajes[index].favorito = true;
 
         setPersonajes(listaPersonajes);
-        setMensaje("Quitar de favoritos");
         setFavoriteado(true);
       }
 
-      console.log(mensaje);
+      
     } else {
       const index = Personajes.findIndex(
         (personaje) => personaje.id === parseInt(id)
       );
+      
       console.log(index);
       if (index !== -1) {
         listaPersonajes[index].favorito = false;
 
         setPersonajes(listaPersonajes);
-        setMensaje("Agregar a favoritos");
         setFavoriteado(false);
       }
     }
 
-    console.log(mensaje);
     console.log(Personajes);
   };
 
