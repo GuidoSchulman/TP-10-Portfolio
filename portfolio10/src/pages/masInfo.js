@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PersonajeContext } from "../context/personajeContext";
-
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 const MasInfo = () => {
   const { id } = useParams();
   const { Personajes, setPersonajes, Favoritos, setFavoritos } = useContext(PersonajeContext);
   const [personaje, setPersonaje] = useState(null);
   const [mensaje, setMensaje] = useState("Agregar a favoritos");
   const [fav, setFav] = useState(false);
-
+  useEffect(() => {
+   
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     let infoP = Personajes.find((personaje) => personaje.id === parseInt(id));
 
@@ -47,7 +50,7 @@ const MasInfo = () => {
       setPersonajes(listaPersonajes);
       setFavoritos(listaFavoritos);
 
-      setMensaje(listaPersonajes[index].favorito ? "Quitar de favoritos" : "Agregar a favoritos");
+      setMensaje(listaPersonajes[index].favorito ? " Quitar de favoritos" : " Agregar a favoritos");
     }
 
     console.log(Personajes);
@@ -76,10 +79,10 @@ const MasInfo = () => {
               <h4>Fecha de creación: {personaje?.fecha}</h4>
             </div>
           </div>
-
           <div className="row justify-content-center">
             <div className="col-md-6 text-center">
               <button onClick={agregarAFavorito} className="btn btn-primary">
+                {fav ? <FaHeart color="red" size={24} /> : <FaRegHeart size={24} />}
                 {mensaje}
               </button>
             </div>
