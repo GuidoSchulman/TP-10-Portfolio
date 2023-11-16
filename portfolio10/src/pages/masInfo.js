@@ -4,7 +4,7 @@ import { PersonajeContext } from "../context/personajeContext";
 
 const MasInfo = () => {
   const { id } = useParams();
-  const { Personajes, setSelectedPersonaje, setPersonajes } =useContext(PersonajeContext);
+  const { Personajes, setSelectedPersonaje, setPersonajes,Favoritos,setFavoritos } =useContext(PersonajeContext);
   const [personaje, setPersonaje] = useState(null);
   const [mensaje, setMensaje] = useState("Agregar a favoritos");
   const[fav,setFav]=useState(false)
@@ -22,37 +22,36 @@ const MasInfo = () => {
     }
   }, [Personajes, id,mensaje]);
 
-  const setFavoriteado = () => {
-    setMensaje(fav ? "Agregar a favoritos" : "Quitar de favoritos");
-  };
-
   const agregarAFavorito = () => {
-    let listaPersonajes = Personajes;
-    if (fav === false) {
-      const index = Personajes.findIndex(
-        (personaje) => personaje.id === parseInt(id)
-      );
-      console.log(index);
-      if (index !== -1) {
-        listaPersonajes[index].favorito = true;
+    let listaPersonajes = [...Personajes]; 
+    let listaFavoritos = [...Favoritos]; 
+  
+    const index = listaPersonajes.findIndex(
+      (personaje) => personaje.id === parseInt(id)
+    );
+  
+    if (index !== -1) {
 
-        setPersonajes(listaPersonajes);
-        setFavoriteado(true);
+      listaPersonajes[index].favorito = !listaPersonajes[index].favorito;
+
+      if (listaPersonajes[index].favorito) {
+
+        listaFavoritos.push(listaPersonajes[index]);
+      } else {
+
+        const favIndex = listaFavoritos.findIndex(
+          (favPersonaje) => favPersonaje.id === parseInt(id)
+        );
+        if (favIndex !== -1) {
+          listaFavoritos.splice(favIndex, 1);
+        }
       }
+  
 
-      
-    } else {
-      const index = Personajes.findIndex(
-        (personaje) => personaje.id === parseInt(id)
-      );
-      
-      console.log(index);
-      if (index !== -1) {
-        listaPersonajes[index].favorito = false;
+      setPersonajes(listaPersonajes);
+      setFavoritos(listaFavoritos);
 
-        setPersonajes(listaPersonajes);
-        setFavoriteado(false);
-      }
+      setMensaje(listaPersonajes[index].favorito ? "Quitar de favoritos" : "Agregar a favoritos");  
     }
 
     console.log(Personajes);

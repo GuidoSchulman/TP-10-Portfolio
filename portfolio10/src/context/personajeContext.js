@@ -6,6 +6,7 @@ export const PersonajeContext = createContext();
 const PersonajeProvider = (props) => {
     const [Personajes, setPersonajes] = useState([]);
     const [selectedPersonaje, setSelectedPersonaje] = useState(null)
+    const [Favoritos, setFavoritos]=useState([])
     console.log(selectedPersonaje);
     useEffect(() => {
         axios
@@ -17,7 +18,15 @@ const PersonajeProvider = (props) => {
             console.log(error);
           });
       }, []);
-    
+      
+      useEffect(()=>{
+        console.log(Favoritos);
+      },[Favoritos])
+
+      useEffect(()=>{
+       
+        localStorage.setItem('favoritos',JSON.stringify(Favoritos))
+      },[Favoritos])
 
     return (
         <PersonajeContext.Provider
@@ -25,7 +34,9 @@ const PersonajeProvider = (props) => {
                 Personajes,
                 setSelectedPersonaje,
                 selectedPersonaje,
-                setPersonajes
+                setPersonajes,
+                Favoritos,
+                setFavoritos
             }}
         >
             {props.children}
