@@ -7,7 +7,7 @@ const Favorites = () => {
 
   return (
     <div className="favorites-container">
-      <h2 className="text-center mb-4">Favorites</h2>
+      <h2 className="text-center mb-4">Favoritos</h2>
       {Favoritos.length === 0 ? (
         <p className="text-center">No tenes ningun favorito todavía.</p>
       ) : (
