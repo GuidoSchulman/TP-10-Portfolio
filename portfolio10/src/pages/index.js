@@ -1,6 +1,6 @@
 import React from 'react'
 import Contact from '../components/contact'
-import Destacado from '../components/item'
+import Destacado from '../components/Destacado'
 
 
 function Index(props) {

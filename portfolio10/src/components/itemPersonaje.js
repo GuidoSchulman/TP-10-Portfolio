@@ -3,12 +3,11 @@ import axios from "axios";
 import { PersonajeContext } from "../context/personajeContext";
 import { Link } from "react-router-dom";
 
-export default function Item() {
-  const { Personajes, setSelectedPersonaje } = useContext(PersonajeContext)  
+export default function ItemPersonaje({personaje,index}) {
+  
 
   return (
-    <div className="row">
-      {Personajes.map((personaje, index) => (
+   
         <div className="col-md-4 mb-5" key={index}>
           <div className="portfolio-item mx-auto">
             <div className="portfolio-item-caption-content text-center text-white">
@@ -27,8 +26,6 @@ export default function Item() {
           </Link>
         </div>
 
-      ))}
-    </div>
   );
 }
 

@@ -4,41 +4,38 @@ import { PersonajeContext } from "../context/personajeContext";
 
 const MasInfo = () => {
   const { id } = useParams();
-  const { Personajes, setSelectedPersonaje, setPersonajes,Favoritos,setFavoritos } =useContext(PersonajeContext);
+  const { Personajes, setPersonajes, Favoritos, setFavoritos } = useContext(PersonajeContext);
   const [personaje, setPersonaje] = useState(null);
   const [mensaje, setMensaje] = useState("Agregar a favoritos");
-  const[fav,setFav]=useState(false)
+  const [fav, setFav] = useState(false);
 
   useEffect(() => {
-    
     let infoP = Personajes.find((personaje) => personaje.id === parseInt(id));
 
     if (infoP) {
       setPersonaje(infoP);
-      setFav(infoP.favorito)
+      setFav(infoP.favorito);
+      setMensaje(infoP.favorito ? "Quitar de favoritos" : "Agregar a favoritos");
     } else {
       // Handle the case where no personaje is found with the given id
       console.error(`No personaje found with id: ${id}`);
     }
-  }, [Personajes, id,mensaje]);
+  }, [Personajes, id]);
 
   const agregarAFavorito = () => {
-    let listaPersonajes = [...Personajes]; 
-    let listaFavoritos = [...Favoritos]; 
-  
+    let listaPersonajes = [...Personajes];
+    let listaFavoritos = [...Favoritos];
+
     const index = listaPersonajes.findIndex(
       (personaje) => personaje.id === parseInt(id)
     );
-  
-    if (index !== -1) {
 
+    if (index !== -1) {
       listaPersonajes[index].favorito = !listaPersonajes[index].favorito;
 
       if (listaPersonajes[index].favorito) {
-
         listaFavoritos.push(listaPersonajes[index]);
       } else {
-
         const favIndex = listaFavoritos.findIndex(
           (favPersonaje) => favPersonaje.id === parseInt(id)
         );
@@ -46,12 +43,11 @@ const MasInfo = () => {
           listaFavoritos.splice(favIndex, 1);
         }
       }
-  
 
       setPersonajes(listaPersonajes);
       setFavoritos(listaFavoritos);
 
-      setMensaje(listaPersonajes[index].favorito ? "Quitar de favoritos" : "Agregar a favoritos");  
+      setMensaje(listaPersonajes[index].favorito ? "Quitar de favoritos" : "Agregar a favoritos");
     }
 
     console.log(Personajes);
@@ -59,28 +55,34 @@ const MasInfo = () => {
 
   return (
     <>
-      <section>
-        <div class="container">
-          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
-            MasInfo
+      <section className="mas-info-section">
+        <div className="container">
+          <h2 className="page-section-heading text-center text-uppercase text-secondary mb-4">
+            {personaje?.titulo}
           </h2>
 
-          <div class="row justify-content-center">
-            <div class="col-sm">
-              <h1>{personaje?.titulo}</h1>
+          <div className="row">
+            <div className="col-md-6 mb-4">
+              <img
+                src={personaje?.imagen}
+                alt={personaje?.titulo}
+                style={imgStyle}
+                className="img-fluid rounded"
+              />
             </div>
-            <div class="col-sm">
-              <button onClick={agregarAFavorito}>{mensaje}</button>
+            <div className="col-md-6 mb-4">
+              <h3>Descripción:</h3>
+              <p>{personaje?.descripcion}</p>
+              <h4>Fecha de creación: {personaje?.fecha}</h4>
             </div>
+          </div>
 
-            <img
-              src={personaje?.imagen}
-              alt={personaje?.titulo}
-              style={imgStyle}
-            />
-            <h2>{personaje?.descripcion}</h2>
-            <p></p>
-            <h3>Fecha de creacion: {personaje?.fecha}</h3>
+          <div className="row justify-content-center">
+            <div className="col-md-6 text-center">
+              <button onClick={agregarAFavorito} className="btn btn-primary">
+                {mensaje}
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -90,7 +92,7 @@ const MasInfo = () => {
 
 const imgStyle = {
   height: "400px",
-  objectFit: "scale-down",
+  objectFit: "cover",
   border: "1px solid #000",
 };
 
