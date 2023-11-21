@@ -2,59 +2,24 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PersonajeContext } from "../context/personajeContext";
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
 const MasInfo = () => {
   const { id } = useParams();
-  const { Personajes, setPersonajes, Favoritos, setFavoritos } = useContext(PersonajeContext);
-  const [personaje, setPersonaje] = useState(null);
-  const [mensaje, setMensaje] = useState("Agregar a favoritos");
-  const [fav, setFav] = useState(false);
+  const { Personajes, existeFavorito,agregarAFavorito,quitarFavorito } = useContext(PersonajeContext);
+  const [personaje, setPersonaje] = useState(null);  
+
   useEffect(() => {
-   
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    let infoP = Personajes.find((personaje) => personaje.id === parseInt(id));
 
-    if (infoP) {
-      setPersonaje(infoP);
-      setFav(infoP.favorito);
-      setMensaje(infoP.favorito ? "Quitar de favoritos" : "Agregar a favoritos");
+  useEffect(() => {
+    const filtro = Personajes.filter(x=>x.id==id);
+    if (filtro.length>0) {
+      setPersonaje(filtro[0]);      
     } else {
-      // Handle the case where no personaje is found with the given id
       console.error(`No personaje found with id: ${id}`);
     }
-  }, [Personajes, id]);
-
-  const agregarAFavorito = () => {
-    let listaPersonajes = [...Personajes];
-    let listaFavoritos = [...Favoritos];
-
-    const index = listaPersonajes.findIndex(
-      (personaje) => personaje.id === parseInt(id)
-    );
-
-    if (index !== -1) {
-      listaPersonajes[index].favorito = !listaPersonajes[index].favorito;
-
-      if (listaPersonajes[index].favorito) {
-        listaFavoritos.push(listaPersonajes[index]);
-      } else {
-        const favIndex = listaFavoritos.findIndex(
-          (favPersonaje) => favPersonaje.id === parseInt(id)
-        );
-        if (favIndex !== -1) {
-          listaFavoritos.splice(favIndex, 1);
-        }
-      }
-
-      setPersonajes(listaPersonajes);
-      setFavoritos(listaFavoritos);
-
-      setMensaje(listaPersonajes[index].favorito ? " Quitar de favoritos" : " Agregar a favoritos");
-    }
-
-    console.log(Personajes);
-  };
+  }, [Personajes, existeFavorito, id]);
 
   return (
     <>
@@ -81,9 +46,9 @@ const MasInfo = () => {
           </div>
           <div className="row justify-content-center">
             <div className="col-md-6 text-center">
-              <button onClick={agregarAFavorito} className="btn btn-primary">
-                {fav ? <FaHeart color="red" size={24} /> : <FaRegHeart size={24} />}
-                {mensaje}
+              <button onClick={existeFavorito(id) ? ()=>quitarFavorito(personaje.id) : ()=>agregarAFavorito(personaje)} className="btn btn-primary">
+                {existeFavorito(id) ? <FaHeart color="red" size={24} /> : <FaRegHeart size={24} />}
+                {existeFavorito(id) ? " Quitar de favoritos" : " Agregar a favoritos"}
               </button>
             </div>
           </div>

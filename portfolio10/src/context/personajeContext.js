@@ -1,51 +1,59 @@
-import axios from 'axios';
-import React,{createContext,useEffect,useState} from 'react';
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
 
 export const PersonajeContext = createContext();
 
 const PersonajeProvider = (props) => {
-    const [Personajes, setPersonajes] = useState([]);
-    const [selectedPersonaje, setSelectedPersonaje] = useState(null)
-    const [Favoritos, setFavoritos] = useState([]);
-    console.log(selectedPersonaje);
+  const PersonajesFavoritos = localStorage.getItem("favoritos")
+    ? JSON.parse(localStorage.getItem("favoritos"))
+    : [];
 
-    useEffect(() => {
-        axios
-          .get("/Personajes.json")
-          .then(function (response) {
-            setPersonajes(response.data.Personajes); // Show only the first 6 items
-        
-            
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }, []);
-      
-      useEffect(()=>{
-        console.log(Favoritos);
-      },[Favoritos])
+  const [Personajes, setPersonajes] = useState([]);
+  const [Favoritos, setFavoritos] = useState(PersonajesFavoritos);
 
-      useEffect(()=>{
-       
-        localStorage.setItem('favoritos',JSON.stringify(Favoritos))
-      },[Favoritos])
+  useEffect(() => {
+    axios
+      .get("/Personajes.json")
+      .then(function (response) {
+        setPersonajes(response.data.Personajes); // Show only the first 6 items
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
-    return (
-        <PersonajeContext.Provider
-            value={{                
-                Personajes,
-                setSelectedPersonaje,
-                selectedPersonaje,
-                setPersonajes,
-                Favoritos,
-                setFavoritos,
+  useEffect(() => {
+    localStorage.setItem("favoritos", JSON.stringify(Favoritos));
+  }, [Favoritos]);
 
-            }}
-        >
-            {props.children}
-        </PersonajeContext.Provider>
-    )
-}
+  const existeFavorito = (id) => {    
+    const filtro = Favoritos.filter((x) => x.id == id);
+    return filtro.length > 0;
+  };
+
+  const agregarAFavorito = (personaje) => {
+    setFavoritos([...Favoritos, personaje]);
+  };
+
+  const quitarFavorito = (id) => {
+    const filtro = Favoritos.filter((x) => x.id !== id);
+    setFavoritos(filtro);
+  };
+
+  return (
+    <PersonajeContext.Provider
+      value={{
+        Personajes,
+        setPersonajes,
+        Favoritos,
+        existeFavorito,
+        agregarAFavorito,
+        quitarFavorito,
+      }}
+    >
+      {props.children}
+    </PersonajeContext.Provider>
+  );
+};
 
 export default PersonajeProvider;
